@@ -55,7 +55,7 @@ public class principal extends javax.swing.JFrame {
                 cmdcalcularActionPerformed(evt);
             }
         });
-        cmdborrar.add(cmdcalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 253, 100, 30));
+        cmdborrar.add(cmdcalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 100, 30));
         cmdcalcular.getAccessibleContext().setAccessibleName("cmdcalcular");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -82,7 +82,7 @@ public class principal extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        cmdborrar.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, 90, 30));
+        cmdborrar.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, 90, 30));
 
         getContentPane().add(cmdborrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 300));
 
@@ -98,7 +98,7 @@ public class principal extends javax.swing.JFrame {
         
         valor1 = Double.parseDouble(txtvalor1.getText());
         
-        op = (100000 + valor1 * 200000) - 200000;
+        op = (valor1 -1) * 200000 + 100000;
         
         txtresultado.setText(String.valueOf(op));
         
