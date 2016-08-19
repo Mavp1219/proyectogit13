@@ -45,18 +45,26 @@ public class principal extends javax.swing.JFrame {
 
         cmdborrar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("VALOR HOTEL ");
-        cmdborrar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 160, 30));
+        cmdborrar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 160, 30));
 
         cmdcalcular.setText("CALCULAR");
+        cmdcalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdcalcularActionPerformed(evt);
+            }
+        });
         cmdborrar.add(cmdcalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 253, 100, 30));
         cmdcalcular.getAccessibleContext().setAccessibleName("cmdcalcular");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("INGRESE EL NUMERO DE DIAS EN EL HOTEL: ");
-        cmdborrar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 64, 230, 30));
+        cmdborrar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 64, 240, 30));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setText("SU MONTO A PAGAR ES DE: ");
-        cmdborrar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 114, 180, 30));
+        cmdborrar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 180, 30));
 
         txtvalor1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,9 +74,14 @@ public class principal extends javax.swing.JFrame {
         cmdborrar.add(txtvalor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 150, 30));
 
         txtresultado.setEditable(false);
-        cmdborrar.add(txtresultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 170, 30));
+        cmdborrar.add(txtresultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 170, 30));
 
         jButton1.setText("BORRAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         cmdborrar.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, 90, 30));
 
         getContentPane().add(cmdborrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 300));
@@ -79,6 +92,27 @@ public class principal extends javax.swing.JFrame {
     private void txtvalor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtvalor1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtvalor1ActionPerformed
+
+    private void cmdcalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdcalcularActionPerformed
+        double valor1,op;
+        
+        valor1 = Double.parseDouble(txtvalor1.getText());
+        
+        op = (100000 + valor1 * 200000) - 200000;
+        
+        txtresultado.setText(String.valueOf(op));
+        
+        
+    }//GEN-LAST:event_cmdcalcularActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        txtvalor1.setText("");
+        txtresultado.setText("");
+        
+        txtvalor1.requestFocusInWindow();
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
