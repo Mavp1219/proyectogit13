@@ -5,6 +5,8 @@
  */
 package repositorio14;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author user
@@ -55,7 +57,7 @@ public class principal extends javax.swing.JFrame {
                 cmdcalcularActionPerformed(evt);
             }
         });
-        cmdborrar.add(cmdcalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 100, 30));
+        cmdborrar.add(cmdcalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 110, 40));
         cmdcalcular.getAccessibleContext().setAccessibleName("cmdcalcular");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -71,6 +73,11 @@ public class principal extends javax.swing.JFrame {
                 txtvalor1ActionPerformed(evt);
             }
         });
+        txtvalor1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtvalor1KeyTyped(evt);
+            }
+        });
         cmdborrar.add(txtvalor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 150, 30));
 
         txtresultado.setEditable(false);
@@ -82,7 +89,7 @@ public class principal extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        cmdborrar.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, 90, 30));
+        cmdborrar.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 100, 40));
 
         getContentPane().add(cmdborrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 300));
 
@@ -94,25 +101,46 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtvalor1ActionPerformed
 
     private void cmdcalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdcalcularActionPerformed
-        double valor1,op;
-        
-        valor1 = Double.parseDouble(txtvalor1.getText());
-        
-        op = (valor1 -1) * 200000 + 100000;
-        
-        txtresultado.setText(String.valueOf(op));
-        
-        
+        double valor1, op;
+
+        if (txtvalor1.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese los dias de su estadia en el hotel", "Error", JOptionPane.ERROR_MESSAGE);
+            txtvalor1.requestFocusInWindow();
+            txtvalor1.selectAll();
+        } else {
+
+            valor1 = Double.parseDouble(txtvalor1.getText());
+
+            if (valor1 == 0) {
+                JOptionPane.showMessageDialog(this, "Ingrese un numero diferente de 0", "Error", JOptionPane.ERROR_MESSAGE);
+                txtvalor1.requestFocusInWindow();
+                txtvalor1.selectAll();
+            } else {
+
+                op = (valor1 - 1) * 200000 + 100000;
+
+                txtresultado.setText(String.valueOf(op));
+            }
+
+        }
     }//GEN-LAST:event_cmdcalcularActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         txtvalor1.setText("");
         txtresultado.setText("");
-        
+
         txtvalor1.requestFocusInWindow();
-        
-        
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtvalor1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtvalor1KeyTyped
+        char c = evt.getKeyChar();
+        if(!Character.isDigit(c)){
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtvalor1KeyTyped
 
     /**
      * @param args the command line arguments
